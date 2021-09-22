@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+// import files here to use components (aka functions)
+import UserBar from './user/userbar';
+import Todo from './todo/todo';
+import CreateTodo from './todo/createtodo';
+import TodoList from './todo/todolist';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <UserBar />
+       <br/><br/><hr/><br/>
+      <Todo author = "Art" />
+      <TodoList />
     </div>
-  );
+  )
 }
 
 export default App;
