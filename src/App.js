@@ -9,7 +9,8 @@ function App() {
     <div>
       <UserBar />
        <br/><br/><hr/><br/>
-      <Todo author = "Art" />
+      <Todo title = "My First Post" />
+      <Todo title = "My Second Post" description = "This is optional"/>
       <TodoList />
     </div>
   )
