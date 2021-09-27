@@ -1,14 +1,16 @@
 import React from 'react';
 
-// TODO: everything here should match todo
-
 export default function CreateTodo ({user}) {
     return (
     <form onSubmit={e => e.preventDefault()}>
         <div>Author: <b>{user}</b></div>
         <div>
-            <label htmlFor="create-title">Title:</label>
+            <label htmlFor="create-title">Title: </label>
             <input type="text" name="create-title" id="create-title" />
+        </div>
+        <div>
+            <label htmlFor="create-description">Description: </label>
+            <input type="text" name="description" id="description" />
         </div>
         <textarea />
         <input type="submit" value="Create" />
