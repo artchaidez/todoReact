@@ -12,7 +12,6 @@ export default function CreateTodo ({user}) {
             <label htmlFor="create-description">Description: </label>
             <input type="text" name="description" id="description" />
         </div>
-        <textarea />
         <input type="submit" value="Create" />
         </form>    
     )
