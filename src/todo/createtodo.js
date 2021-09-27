@@ -12,7 +12,7 @@ export default function CreateTodo ({user}) {
             <label htmlFor="create-description">Description: </label>
             <input type="text" name="description" id="description" />
         </div>
-        <input type="submit" value="Create" />
+        <input type="submit" value="Create Todo" />
         </form>    
     )
 }

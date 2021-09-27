@@ -8,7 +8,7 @@ import TodoList from '../todo/todolist';
 export default function UserBar() {
 
     // Logout will appear if user != ''
-    const user = 'Art';
+    const user = '';
     const post = [
         {
             title: "Buy Milk", 
