@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import Login from './login';
 import Logout from './logout';
 import Register from './register';
 import CreateTodo from '../todo/createtodo';
 import TodoList from '../todo/todolist';
 
-export default function UserBar({user, setUser}) {
+export default function UserBar({user, dispatchUser}) {
 
     const initialTodos = [
         {
@@ -17,15 +17,30 @@ export default function UserBar({user, setUser}) {
         }
     ]
 
-    const [ todos, setTodos ] = useState(initialTodos)
+    // need TOGGLE_TODO and DELETE_TODO, check createtodo.js
+    function todoReducer (state, action) {
+        switch (action.type) {
+        case 'CREATE_TODO':
+            const newTodo = { 
+            title: action.title,
+            description: action.description,
+            author: action.author 
+            }
+            return [ newTodo, ...state ]
+        default:
+            throw new Error()
+        }
+    }
+
+    const [ todos, dispatchTodos ] = useReducer(todoReducer, initialTodos)
    
     // NOTE: decide if <TodoList todo= {todos}/> goes first, or next line goes first
     if (user) {
         return (
             <>
-            <Logout user={user} setUser={setUser} />
+            <Logout user={user} dispatchUser={dispatchUser} />
             <br/><br/><hr/><br/>
-            {user && <CreateTodo user={user} todos={todos} setTodos={setTodos} />}
+            {user && <CreateTodo user={user} dispatch={dispatchTodos} />}
             <TodoList todo= {todos}/>
             </>
         )
@@ -33,9 +48,9 @@ export default function UserBar({user, setUser}) {
         return (
         <>
             <h3>Sign in</h3>
-            <Login setUser={setUser} />
+            <Login dispatchUser={dispatchUser}/>
             <h3>Sign up</h3>
-            <Register setUser={setUser} />
+            <Register dispatchUser={dispatchUser} />
             <br/><br/><hr/><br/>
             </>
         )

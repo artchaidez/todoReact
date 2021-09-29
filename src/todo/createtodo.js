@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
 
-export default function CreateTodo ({user, todos, setTodos}) {
+export default function CreateTodo ({user, dispatch}) {
 
     const [ title, setTitle ] = useState('');
     const [ description, setDescription ] = useState('');
 
     function handleTitle (evt) { setTitle(evt.target.value) }
     function handleDescription (evt) { setDescription(evt.target.value) }
-    function handleCreate () {     
-        const newTodo = { title, description, author: user }
-        setTodos([ newTodo, ...todos ])
-    }
 
+    // // need TOGGLE_TODO and DELETE_TODO, check userbar.js
     return (
-    <form onSubmit={e => { e.preventDefault(); handleCreate(); } }>
+    <form onSubmit={e => { e.preventDefault(); dispatch({type: "CREATE_TODO", title, description, author: user}); }}>
         <div>Author: <b>{user}</b></div>
         <div>
             <label htmlFor="create-title">Title: </label>
