@@ -28,6 +28,7 @@ export default function Todo ({ title , description}) {
     }
 
     // for checked, dateCompleted/complete order matters
+    // warning on line 39,  Unexpected use of comma operator  no-sequences
     return (
         <div>
             <h2>{title}</h2>
