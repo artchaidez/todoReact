@@ -8,7 +8,7 @@ export default function CreateTodo ({user, dispatch}) {
     function handleTitle (evt) { setTitle(evt.target.value) }
     function handleDescription (evt) { setDescription(evt.target.value) }
 
-    // // need TOGGLE_TODO and DELETE_TODO, check userbar.js
+    // optional TOGGLE_TODO and DELETE_TODO, check userbar.js
     return (
     <form onSubmit={e => { e.preventDefault(); dispatch({type: "CREATE_TODO", title, description, author: user}); }}>
         <div>Author: <b>{user}</b></div>

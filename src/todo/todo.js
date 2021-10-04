@@ -15,11 +15,10 @@ export default function Todo ({ title , description}) {
 
     const [dateCompleted, setDateCompletedTime] = React.useState(false);
     const handleCompletedTime = () => {
-
-    if (!complete)
-        setDateCompletedTime(title + " was completed " + Date() );
-    else 
-        setDateCompletedTime(title + " was created " + Math.floor(millis / 1000) + " seconds ago.");
+        if (!complete)
+            setDateCompletedTime(title + " was completed " + Date() );
+        else 
+            setDateCompletedTime(title + " was created " + Math.floor(millis / 1000) + " seconds ago.");
     }
 
     function testFunction() {
@@ -39,7 +38,6 @@ export default function Todo ({ title , description}) {
             <input type="checkbox" checked={dateCompleted, complete} onChange={testFunction} /> Complete
             <p>{dateCompleted}</p>
             <hr/>
-        </div>        
-        
+        </div>               
     )
 }

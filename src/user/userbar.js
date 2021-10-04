@@ -17,7 +17,7 @@ export default function UserBar({user, dispatchUser}) {
         }
     ]
 
-    // need TOGGLE_TODO and DELETE_TODO, check createtodo.js
+    // optional: TOGGLE_TODO and DELETE_TODO, check createtodo.js
     function todoReducer (state, action) {
         switch (action.type) {
         case 'CREATE_TODO':
