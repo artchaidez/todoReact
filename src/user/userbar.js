@@ -1,13 +1,16 @@
-import React, { useReducer } from 'react';
-import Login from './login';
-import Logout from './logout';
-import Register from './register';
-import CreateTodo from '../todo/createtodo';
-import TodoList from '../todo/todolist';
+import React, { useContext, useReducer } from 'react';
+import Login from './Login';
+import Logout from './Logout';
+import Register from './Register';
+import CreateTodo from '../todo/Createtodo';
+import TodoList from '../todo/Todolist';
+import { StateContext } from '../Contexts';
 
-export default function UserBar({user, dispatchUser}) {
+export default function UserBar() {
 
-    //add author?
+    const {state} = useContext(StateContext);
+    const {user} = state;
+
     const initialTodos = [
         {
             title: "Buy Milk", 
@@ -54,23 +57,23 @@ export default function UserBar({user, dispatchUser}) {
 
     const [ todos, dispatchTodos ] = useReducer(todoReducer, initialTodos)
    
-    // NOTE: decide if <TodoList todo= {todos}/> goes first, or next line goes first
+    // Remove what is passed in for CreateTodo, TodoList, Logout, Login, Register
     if (user) {
         return (
             <>
-            <Logout user={user} dispatchUser={dispatchUser} />
+            <Logout  />
             <br/><br/><hr/><br/>
-            {user && <CreateTodo user={user} dispatch={dispatchTodos} />}
-            <TodoList todo= {todos} dispatch={dispatchTodos}/>
+            {user && <CreateTodo />}
+            <TodoList />
             </>
         )
     } else {
         return (
         <>
             <h3>Sign in</h3>
-            <Login dispatchUser={dispatchUser}/>
+            <Login />
             <h3>Sign up</h3>
-            <Register dispatchUser={dispatchUser} />
+            <Register  />
             <br/><br/><hr/><br/>
             </>
         )

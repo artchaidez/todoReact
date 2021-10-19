@@ -3,6 +3,8 @@ import React from 'react';
 const start = Date.now();
 const dateCreated = Date(); 
 
+// TODO merge my "completed" with Prof "complete" and "completedOn"
+
 export default function Todo ({ title , description, author, complete, completedOn, dispatch, postId}) {
 
     description = (typeof description !== 'undefined') ?  description : "";

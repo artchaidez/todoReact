@@ -1,9 +1,10 @@
-import UserBar from './user/userbar';
-import Todo from './todo/todo';
+import UserBar from './user/Userbar';
+import Todo from './todo/Todo';
 import React, { useReducer } from 'react'
 
-function App() {
+import { StateContext } from './Contexts';
 
+function App() {
 
   function userReducer (state, action) {
     switch (action.type) {
@@ -12,15 +13,18 @@ function App() {
         return action.username
       case 'LOGOUT':return ''
       default:
-        throw new Error()
+        throw state
     }
   }
 
   const [ user, dispatchUser ] = useReducer(userReducer, '')
 
+  // Remove passing in user and dispatch for UserBar
   return (
     <div>
-      <UserBar user= {user} dispatchUser = {dispatchUser}/>
+      <StateContext.Provider value={ {state: user, dispatch: dispatchUser} }>
+      <UserBar />
+      </StateContext.Provider>
     </div>
   )
 }
