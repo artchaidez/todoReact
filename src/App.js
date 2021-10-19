@@ -21,8 +21,6 @@ function App() {
   return (
     <div>
       <UserBar user= {user} dispatchUser = {dispatchUser}/>
-      <Todo title = "Complete HW1" />
-      <Todo title = "Complete HW2" description = "Decription is optional"/>
     </div>
   )
 }

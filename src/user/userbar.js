@@ -7,13 +7,20 @@ import TodoList from '../todo/todolist';
 
 export default function UserBar({user, dispatchUser}) {
 
+    //add author?
     const initialTodos = [
         {
             title: "Buy Milk", 
+            author: "Paul",
+            complete: false,
+            completedOn: undefined
         },
         {
             title: "Buy new tires",
-            description: "Buy name brand"
+            description: "Buy name brand",
+            author: "Paul",
+            complete: false,
+            completedOn: undefined
         }
     ]
 
@@ -24,11 +31,24 @@ export default function UserBar({user, dispatchUser}) {
             const newTodo = { 
             title: action.title,
             description: action.description,
-            author: action.author 
+            author: action.author, 
+            complete: false,
+            completedOn: undefined
             }
             return [ newTodo, ...state ]
+        case 'TOGGLE_POST':
+            return state.map((p, i) => {
+                if(i === action.postId) {
+                    p.complete = action.complete;
+                    p.completedOn = Date.now();
+                    console.log(p)
+                }
+                return p;
+            })
+        case 'DELETE_POST':
+            return state.filter((p,i) => i !== action.postId)
         default:
-            throw new Error()
+            throw state;
         }
     }
 
@@ -41,7 +61,7 @@ export default function UserBar({user, dispatchUser}) {
             <Logout user={user} dispatchUser={dispatchUser} />
             <br/><br/><hr/><br/>
             {user && <CreateTodo user={user} dispatch={dispatchTodos} />}
-            <TodoList todo= {todos}/>
+            <TodoList todo= {todos} dispatch={dispatchTodos}/>
             </>
         )
     } else {
