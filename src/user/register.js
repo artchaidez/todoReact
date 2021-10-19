@@ -11,7 +11,6 @@ export default function Register() {
         passwordRepeat: ""
     })
 
-    // pass in REGISTER type and pass indata username
     return (<form onSubmit={e => { e.preventDefault(); dispatch({ type: 'REGISTER', username: formData.username}); }}>
         <label htmlFor="register-username">Username:</label>
         <input type="text" value={formData.username} onChange={e => setFormData({...formData, username: e.target.value})} name="register-username" id="register-username" />

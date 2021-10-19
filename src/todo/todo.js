@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { StateContext } from '../Contexts';
 
 const start = Date.now();
 const dateCreated = Date(); 
 
 // TODO merge my "completed" with Prof "complete" and "completedOn"
+// add stateContext
 
-export default function Todo ({ title , description, author, complete, completedOn, dispatch, postId}) {
+export default function Todo ({ title , description, author, complete, completedOn, postId}) {
+
+    const {dispatch} = useContext(StateContext);
 
     description = (typeof description !== 'undefined') ?  description : "";
     const millis = Date.now() - start;
@@ -28,7 +32,6 @@ export default function Todo ({ title , description, author, complete, completed
         handleChange();
     }
 
-    // for checked, dateCompleted/complete order matters
     // warning on line 39,  Unexpected use of comma operator  no-sequences
     return (
         <div>

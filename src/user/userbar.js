@@ -9,7 +9,6 @@ import { StateContext } from '../Contexts';
 export default function UserBar() {
 
     const {state} = useContext(StateContext);
-    const {user} = state;
 
     const initialTodos = [
         {
@@ -27,7 +26,6 @@ export default function UserBar() {
         }
     ]
 
-    // optional: TOGGLE_TODO and DELETE_TODO, check createtodo.js
     function todoReducer (state, action) {
         switch (action.type) {
         case 'CREATE_TODO':
@@ -57,13 +55,12 @@ export default function UserBar() {
 
     const [ todos, dispatchTodos ] = useReducer(todoReducer, initialTodos)
    
-    // Remove what is passed in for CreateTodo, TodoList, Logout, Login, Register
-    if (user) {
+    if (state) {
         return (
             <>
             <Logout  />
             <br/><br/><hr/><br/>
-            {user && <CreateTodo />}
+            {state && <CreateTodo />}
             <TodoList />
             </>
         )

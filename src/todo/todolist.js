@@ -1,13 +1,18 @@
 import React from 'react'
 import Todo from './Todo';
 
-export default function TodoList ({todo = [], dispatch}) {
+import { StateContext } from '../Contexts';
+import { useContext } from 'react/cjs/react.development'
 
-    // update once Login works
+// Does not work
+
+export default function TodoList () {
+    const {state} = useContext(StateContext)
+    const {todo} = state;
 
     return (
         <div>
-            {todo.map((p, i) => <Todo {...p} title={p.title} author={p.author}  key={'todo-' + i} dispatch={dispatch} postId={i} />)}
+            {todo.map((p, i) => <Todo {...p} title={p.title} author={p.author}  key={'todo-' + i} postId={i} />)}
         </div> 
     )
 }
