@@ -17,7 +17,7 @@ export default function CreateTodo () {
     // could be i need to use state, not user?
     return (
     <form onSubmit={e => { e.preventDefault(); dispatch({type: "CREATE_TODO", title, description, author: state}); }}>
-        <div>Author: <b>{state}</b></div>
+        <div>Author: <b>{user}</b></div>
         <div>
             <label htmlFor="create-title">Title: </label>
             <input type="text" value={title} onChange={handleTitle} name="create-title" id="create-title" />

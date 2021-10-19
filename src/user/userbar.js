@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useContext} from 'react';
 import Login from './Login';
 import Logout from './Logout';
 import Register from './Register';
@@ -9,58 +9,16 @@ import { StateContext } from '../Contexts';
 export default function UserBar() {
 
     const {state} = useContext(StateContext);
+    const {user} = state;
 
-    const initialTodos = [
-        {
-            title: "Buy Milk", 
-            author: "Paul",
-            complete: false,
-            completedOn: undefined
-        },
-        {
-            title: "Buy new tires",
-            description: "Buy name brand",
-            author: "Paul",
-            complete: false,
-            completedOn: undefined
-        }
-    ]
-
-    function todoReducer (state, action) {
-        switch (action.type) {
-        case 'CREATE_TODO':
-            const newTodo = { 
-            title: action.title,
-            description: action.description,
-            author: action.author, 
-            complete: false,
-            completedOn: undefined
-            }
-            return [ newTodo, ...state ]
-        case 'TOGGLE_POST':
-            return state.map((p, i) => {
-                if(i === action.postId) {
-                    p.complete = action.complete;
-                    p.completedOn = Date.now();
-                    console.log(p)
-                }
-                return p;
-            })
-        case 'DELETE_POST':
-            return state.filter((p,i) => i !== action.postId)
-        default:
-            throw state;
-        }
-    }
-
-    const [ todos, dispatchTodos ] = useReducer(todoReducer, initialTodos)
+    //const [ todos, dispatchTodos ] = useReducer(todoReducer, initialTodos)
    
-    if (state) {
+    if (user) {
         return (
             <>
             <Logout  />
             <br/><br/><hr/><br/>
-            {state && <CreateTodo />}
+            {user && <CreateTodo />}
             <TodoList />
             </>
         )

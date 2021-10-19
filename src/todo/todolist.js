@@ -5,14 +5,15 @@ import { StateContext } from '../Contexts';
 import { useContext } from 'react/cjs/react.development'
 
 // Does not work
+// is it const {todo} or const {todos}
 
 export default function TodoList () {
-    const {state} = useContext(StateContext)
-    const {todo} = state;
+    const {state} = useContext(StateContext);
+    const {todos} = state;
 
     return (
         <div>
-            {todo.map((p, i) => <Todo {...p} title={p.title} author={p.author}  key={'todo-' + i} postId={i} />)}
+            {todos.map((p, i) => <Todo {...p} title={p.title} author={p.author}  key={'todo-' + i} postId={i} />)}
         </div> 
     )
 }
