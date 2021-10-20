@@ -4,9 +4,6 @@ import Todo from './Todo';
 import { StateContext } from '../Contexts';
 import { useContext } from 'react/cjs/react.development'
 
-// Does not work
-// is it const {todo} or const {todos}
-
 export default function TodoList () {
     const {state} = useContext(StateContext);
     const {todos} = state;

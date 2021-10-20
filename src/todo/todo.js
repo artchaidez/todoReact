@@ -4,8 +4,7 @@ import { StateContext } from '../Contexts';
 const start = Date.now();
 const dateCreated = Date(); 
 
-// TODO merge my "completed" with Prof "complete" and "completedOn"
-// add stateContext
+// TODO: merge my "completed" with Prof "complete" and "completedOn"
 
 export default function Todo ({ title , description, author, complete, completedOn, postId}) {
 

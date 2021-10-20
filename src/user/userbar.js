@@ -10,8 +10,6 @@ export default function UserBar() {
 
     const {state} = useContext(StateContext);
     const {user} = state;
-
-    //const [ todos, dispatchTodos ] = useReducer(todoReducer, initialTodos)
    
     if (user) {
         return (

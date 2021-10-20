@@ -20,13 +20,10 @@ function App() {
         complete: false,
         completedOn: undefined
     }
-]
+  ]
 
-  const [ state, dispatch ] = useReducer(appReducer, { user: '', posts: initialTodos })
-  //const {user, posts} = state;
-  //const [ user, dispatchUser ] = useReducer(userReducer, '')
+  const [ state, dispatch ] = useReducer(appReducer, { user: '', todos: initialTodos })
 
-  // Remove passing in user and dispatch for UserBar
   return (
     <div>
       <StateContext.Provider value={ {state: state, dispatch: dispatch} }>

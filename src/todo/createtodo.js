@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { StateContext } from '../Contexts';
 
-// NOTE: not working
 
 export default function CreateTodo () {
 
@@ -14,9 +13,8 @@ export default function CreateTodo () {
     function handleTitle (evt) { setTitle(evt.target.value) }
     function handleDescription (evt) { setDescription(evt.target.value) }
 
-    // could be i need to use state, not user?
     return (
-    <form onSubmit={e => { e.preventDefault(); dispatch({type: "CREATE_TODO", title, description, author: state}); }}>
+    <form onSubmit={e => { e.preventDefault(); dispatch({type: "CREATE_TODO", title, description, author: user}); }}>
         <div>Author: <b>{user}</b></div>
         <div>
             <label htmlFor="create-title">Title: </label>
