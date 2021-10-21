@@ -3,7 +3,8 @@ function userReducer (state, action) {
         case 'LOGIN':
         case 'REGISTER':
             return action.username
-        case 'LOGOUT':return ''
+        case 'LOGOUT':
+            return ''
         default:
             return state
     }
@@ -20,7 +21,7 @@ function todosReducer (state, action) {
             completedOn: undefined
             }
             return [ newTodo, ...state ]
-        case 'TOGGLE_POST':
+        case 'TOGGLE_TODO':
             return state.map((p, i) => {
                 if(i === action.postId) {
                     p.complete = action.complete;
@@ -29,8 +30,10 @@ function todosReducer (state, action) {
                 }
                 return p;
             })
-        case 'DELETE_POST':
+        case 'DELETE_TODO':
             return state.filter((p,i) => i !== action.postId)
+        case 'FETCH_TODOS':
+            return action.todos
         default:
             return state;
     }

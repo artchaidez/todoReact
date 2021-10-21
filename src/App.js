@@ -1,28 +1,27 @@
 import UserBar from './user/Userbar';
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import appReducer from './Reducers';
+import { useResource } from 'react-request-hook'
 
 import { StateContext } from './Contexts';
 
 function App() {
 
-  const initialTodos = [
-    {
-        title: "Buy Milk", 
-        author: "Paul",
-        complete: false,
-        completedOn: undefined
-    },
-    {
-        title: "Buy new tires",
-        description: "Buy name brand",
-        author: "Paul",
-        complete: false,
-        completedOn: undefined
-    }
-  ]
+  const [ todos, getTodos ] = useResource(() => ({
+    url: '/todos',
+    method: 'get'
+  }))
 
-  const [ state, dispatch ] = useReducer(appReducer, { user: '', todos: initialTodos })
+  const [ state, dispatch ] = useReducer(appReducer, { user: '', todos: [] })
+  
+  useEffect(getTodos, [])
+
+  useEffect(() => {
+    if (todos && todos.data) {
+        dispatch({ type: 'FETCH_TODOS', todos: todos.data })
+    }
+  }, [todos])
+
 
   return (
     <div>

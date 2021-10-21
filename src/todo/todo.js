@@ -43,8 +43,8 @@ export default function Todo ({ title , description, author, complete, completed
             <p>{dateCompleted}</p>
             
             <i>Written by <b>{author}</b></i>
-            <input type="checkbox" onClick={e => {dispatch({type: 'TOGGLE_POST', complete:!complete, postId: postId})}} />
-            <button onClick={(e) => {dispatch({type: 'DELETE_POST', postId: postId})}}>Delete Post</button>
+            <input type="checkbox" onClick={e => {dispatch({type: 'TOGGLE_TODO', complete:!complete, postId: postId})}} />
+            <button onClick={(e) => {dispatch({type: 'DELETE_TODO', postId: postId})}}>Delete Todo</button>
             {complete && <><br/><i>Completed on: {new Date(completedOn).toLocaleDateString('en-us')}</i><br/></>}
           
             <hr/>
