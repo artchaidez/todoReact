@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-navi';
+import { Navbar } from 'react-bootstrap'
 
 const Header = ({text}) => {     
-    return <Link href="/"><h1>{text}</h1></Link>
+    return <Link href="/"><Navbar.Brand>{text}</Navbar.Brand></Link>
 
 }
 

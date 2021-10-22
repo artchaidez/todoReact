@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { StateContext } from '../Contexts';
 import { useResource } from 'react-request-hook';
+import { useNavigation } from 'react-navi';
 
 export default function CreateTodo () {
 
@@ -12,6 +13,8 @@ export default function CreateTodo () {
         method: 'post',
         data: { title, description, author }
     }))
+
+    const navigation = useNavigation()
 
     const {state, dispatch} = useContext(StateContext);
     const {user} = state;
@@ -26,8 +29,9 @@ export default function CreateTodo () {
     useEffect(() => {
         if (todos && todos.data) {
             dispatch({ type: 'CREATE_TODO', title: todos.data.title, description: todos.data.description, id: todos.data.id,  author: user })
-        }
-      }, [todos])
+            navigation.navigate('/todo/${todos.data.id}')
+        }  
+    }, [todos])
 
     return (
     <form onSubmit={e => { e.preventDefault(); handleCreate(); }}>

@@ -1,10 +1,8 @@
-import UserBar from './user/Userbar';
 import React, { useReducer, useEffect } from 'react'
 import appReducer from './Reducers';
-import { useResource } from 'react-request-hook'
-import Header from './Header';
 import { mount, route } from 'navi';
 import { Router, View } from 'react-navi';
+import { Container } from 'react-bootstrap';
 
 
 import { StateContext } from './Contexts';
@@ -44,12 +42,12 @@ function App() {
     <div>
       <StateContext.Provider value={ {state: state, dispatch: dispatch} }>
       <Router routes={routes}>
-            <div style={{ padding: 8 }}>
+        <Container>
                 <HeaderBar/>
                 <hr />
                 <View />
-            </div>
-            </Router>
+        </Container>
+      </Router>
       </StateContext.Provider>
     </div>
   )

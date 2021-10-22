@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { StateContext } from '../Contexts';
 import { useResource } from 'react-request-hook';
+import { Modal, Form, Button } from 'react-bootstrap';
 
-export default function Login() {
+export default function Login({ show, handleClose}) {
 
     const {dispatch} = useContext(StateContext);
 
@@ -30,16 +31,23 @@ export default function Login() {
     }, [user])
 
     return (
-    <form onSubmit={e => { e.preventDefault(); login(username, password); }}>
-        <label htmlFor="login-username">Username:</label>
-        <input type="text" value={username} onChange={handleUsername} name="login-username" id="login-username" />
-
-        <label htmlFor="login-password">Password:</label>
-        <input type="password" value={password} onChange={handlePassword} name="login-username" id="login-username" />
-        
-        <input type="submit" value="Login" />
-        {loginFailed && <span style={{ color: 'red' }}>Invalid username or password</span>}
-
-    </form>
+        <Modal show={show} onHide={handleClose}>
+        <Form onSubmit={e => { e.preventDefault(); login(username, password); handleClose() }}>
+          <Modal.Header closeButton>
+            <Modal.Title>Login</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form.Label htmlFor="login-username">Username:</Form.Label>
+            <Form.Control type="text" value={username} onChange={handleUsername} name="login-username" id="login-username" />
+            <Form.Label htmlFor="login-password">Password:</Form.Label>
+            <Form.Control type="password" value={password} onChange={handlePassword} name="login-password" id="login-password" />
+            {loginFailed && <Form.Text style={{ color: 'red' }}>Invalid username or password</Form.Text>}
+            </Modal.Body>
+        <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>Cancel</Button>
+            <Button variant="primary" disabled={username.length === 0} type="submit">Login</Button>
+        </Modal.Footer>
+    </Form>
+    </Modal>
     )
 }
