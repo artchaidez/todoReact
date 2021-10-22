@@ -3,6 +3,7 @@ import CreateTodo from '../todo/Createtodo'
 import UserBar from '../user/Userbar'
 import Header from '../Header'
 import { StateContext } from '../Contexts'
+import { Link } from 'react-navi';
 
 export default function HeaderBar () {
     
@@ -11,11 +12,11 @@ export default function HeaderBar () {
     
     return (
     <>
-        <Header text="My Blog" />
+        <Header text="My Todo List" />
             <React.Suspense fallback={"Loading..."}>
             <UserBar />
             </React.Suspense> <br /><br />
-            {user && <CreateTodo />}<br />
+            {user && <Link href="/todo/create">Create New Todo</Link> }
     </>
     )
 }

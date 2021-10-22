@@ -10,7 +10,7 @@ export default function TodoList () {
 
     return (
         <div>
-            {todos.map((p, i) => <Todo {...p} title={p.title} author={p.author}  key={'todo-' + i} postId={i} />)}
+            {todos.map((p, i) => <Todo {...p}  short={true} title={p.title} author={p.author}  key={'todo-' + i} postId={p.id} />)}
         </div> 
     )
 }
