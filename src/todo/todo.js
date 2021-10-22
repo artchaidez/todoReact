@@ -6,7 +6,7 @@ const dateCreated = Date();
 
 // TODO: merge my "completed" with Prof "complete" and "completedOn"
 
-export default function Todo ({ title , description, author, complete, completedOn, postId}) {
+function Todo ({ title , description, author, complete, completedOn, postId}) {
 
     const {dispatch} = useContext(StateContext);
 
@@ -51,3 +51,5 @@ export default function Todo ({ title , description, author, complete, completed
         </div>               
     )
 }
+
+export default React.memo(Todo);

@@ -48,6 +48,11 @@
       "id": 1,
       "username": "paul",
       "password": "badpassword"
+    },
+    {
+      "username": "Tury",
+      "password": "as",
+      "id": 2
     }
   ]
 }

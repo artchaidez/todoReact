@@ -1,6 +1,5 @@
 import React, { useContext} from 'react';
 import Login from './Login';
-import Logout from './Logout';
 import Register from './Register';
 import CreateTodo from '../todo/Createtodo';
 import TodoList from '../todo/Todolist';
@@ -8,6 +7,7 @@ import { StateContext } from '../Contexts';
 
 export default function UserBar() {
 
+    const Logout = React.lazy(() => import('./Logout'))
     const {state} = useContext(StateContext);
     const {user} = state;
    
