@@ -11,13 +11,16 @@ export default function UserBar() {
     const {state} = useContext(StateContext);
     const {user} = state;
    
+    //removed from first return
+    //            <TodoList />
+
+    //            {user && <CreateTodo />}
+
     if (user) {
         return (
             <>
             <Logout  />
             <br/><br/><hr/><br/>
-            {user && <CreateTodo />}
-            <TodoList />
             </>
         )
     } else {

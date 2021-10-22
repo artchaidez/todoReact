@@ -6,29 +6,32 @@ import Header from './Header';
 
 import { StateContext } from './Contexts';
 import HeaderBar from './pages/HeaderBar';
+import HomePage from './pages/HomePage';
 
 function App() {
 
+  /*
   const [ todos, getTodos ] = useResource(() => ({
     url: '/todos',
     method: 'get'
-  }))
+  })) */
 
   const [ state, dispatch ] = useReducer(appReducer, { user: '', todos: [] })
-  
+  /*
   useEffect(getTodos, [])
 
   useEffect(() => {
     if (todos && todos.data) {
         dispatch({ type: 'FETCH_TODOS', todos: todos.data })
     }
-  }, [todos])
+  }, [todos]) */
 
 
   return (
     <div>
       <StateContext.Provider value={ {state: state, dispatch: dispatch} }>
         <HeaderBar/>
+        <HomePage/>
       </StateContext.Provider>
     </div>
   )
