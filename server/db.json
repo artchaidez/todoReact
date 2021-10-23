@@ -59,6 +59,12 @@
       "description": "123",
       "author": "Tury",
       "id": 11
+    },
+    {
+      "title": "Duplicate",
+      "description": "Check if duplicate appears",
+      "author": "Tury",
+      "id": 12
     }
   ],
   "users": [

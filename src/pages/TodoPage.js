@@ -4,9 +4,7 @@ import { Link } from 'react-navi';
 
 import Todo from '../todo/Todo'
 
-// TODO: Rename PostPage to TodoPage
-
-export default function PostPage ({ id }) {
+export default function TodoPage ({ id }) {
 
     const [ todos, getTodos ] = useResource(() => ({
         url: `/todos/${id}`,

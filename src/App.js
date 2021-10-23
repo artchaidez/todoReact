@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from 'react'
+import React, { useReducer } from 'react'
 import appReducer from './Reducers';
 import { mount, route } from 'navi';
 import { Router, View } from 'react-navi';
@@ -7,33 +7,19 @@ import { Container } from 'react-bootstrap';
 
 import { StateContext } from './Contexts';
 import CreateTodo from './todo/Createtodo';
-import PostPage from './pages/PostPage';
+import TodoPage from './pages/TodoPage';
 import HeaderBar from './pages/HeaderBar';
 import HomePage from './pages/HomePage';
 
 function App() {
 
-  /*
-  const [ todos, getTodos ] = useResource(() => ({
-    url: '/todos',
-    method: 'get'
-  })) */
-
   const [ state, dispatch ] = useReducer(appReducer, { user: '', todos: [] })
-  /*
-  useEffect(getTodos, [])
-
-  useEffect(() => {
-    if (todos && todos.data) {
-        dispatch({ type: 'FETCH_TODOS', todos: todos.data })
-    }
-  }, [todos]) */
 
   const routes = mount({
     '/': route({ view: <HomePage /> }),
     '/todo/create':route({ view: <CreateTodo /> }),
     '/todo/:id': route(req => {
-        return { view: <PostPage id={req.params.id} /> }
+        return { view: <TodoPage id={req.params.id} /> }
     }),
   })
 
@@ -54,8 +40,3 @@ function App() {
 }
 
 export default App;
-
-/* <Header text="My Todolist" />
-        <React.Suspense fallback={"Loading..."}>
-        <UserBar />
-        </React.Suspense>*/

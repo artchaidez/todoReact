@@ -25,8 +25,6 @@ export default function Register({ show, handleClose }) {
         }
     }, [user])
 
-    // TODO: Clean up return
-
     return (
         <Modal show={show} onHide={handleClose}>
         <Form onSubmit={e => { e.preventDefault(); register(formData.username, formData.password); handleClose(); }}>
