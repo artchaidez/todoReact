@@ -26,6 +26,9 @@ export default function CreateTodo () {
         createTodo({ title, description, author: user })
     }
 
+    // if duplicate todos appear, change useEffect to something similar below
+    //if (post && post.isLoading === false && post.data)
+
     useEffect(() => {
         if (todos && todos.data) {
             dispatch({ type: 'CREATE_TODO', title: todos.data.title, description: todos.data.description, id: todos.data.id,  author: user })

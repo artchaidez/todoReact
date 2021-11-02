@@ -6,7 +6,7 @@ import { Container } from 'react-bootstrap';
 
 
 import { StateContext } from './Contexts';
-import CreateTodo from './todo/Createtodo';
+import CreateTodo from './todo/CreateTodo';
 import TodoPage from './pages/TodoPage';
 import HeaderBar from './pages/HeaderBar';
 import HomePage from './pages/HomePage';
