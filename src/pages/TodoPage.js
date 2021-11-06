@@ -6,17 +6,17 @@ import Todo from '../todo/Todo'
 
 export default function TodoPage ({ id }) {
 
-    const [ todos, getTodos ] = useResource(() => ({
+    const [ todo, getTodo ] = useResource(() => ({
         url: `/todos/${id}`,
         method: 'get'
     }))
 
-    useEffect(getTodos, [id])
+    useEffect(getTodo, [id])
 
     return (
         <div>
-            {(todos && todos.data)
-                ? <Todo {...todos.data} />
+            {(todo && todo.data)
+                ? <Todo {...todo.data} />
                 : 'Loading...'
             }
             <div><Link href="/">Go back</Link></div>

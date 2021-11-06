@@ -23,54 +23,6 @@
       "complete": false,
       "completedOn": null,
       "id": 5
-    },
-    {
-      "title": "Buy Razors",
-      "description": "Generic Brand",
-      "author": "Art",
-      "id": 6
-    },
-    {
-      "title": "Buy Razors",
-      "description": "as",
-      "author": "Art",
-      "id": 7
-    },
-    {
-      "title": "Buy Razors",
-      "description": "lol",
-      "author": "Art",
-      "id": 8
-    },
-    {
-      "title": "Wash Car",
-      "description": "By hand",
-      "author": "Tury",
-      "id": 9
-    },
-    {
-      "title": "TESTING",
-      "description": "TESTING",
-      "author": "Tury",
-      "id": 10
-    },
-    {
-      "title": "123",
-      "description": "123",
-      "author": "Tury",
-      "id": 11
-    },
-    {
-      "title": "Duplicate",
-      "description": "Check if duplicate appears",
-      "author": "Tury",
-      "id": 12
-    },
-    {
-      "title": "todoid",
-      "description": "todo id does not appear",
-      "author": "Tury",
-      "id": 13
     }
   ],
   "users": [

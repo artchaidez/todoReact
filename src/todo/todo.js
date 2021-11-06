@@ -21,7 +21,7 @@ function Todo ({ title , description, author, complete, completedOn, todoId, sho
 
     const [deletedTodo, deleteTodo] = useResource((todoId) => ({
         url: `/todos/${todoId}`,
-        methid: "delete"
+        method: "delete"
     }));
 
     const [toggledTodo, toggleTodo] = useResource((todoId, completed) => ({
@@ -34,13 +34,13 @@ function Todo ({ title , description, author, complete, completedOn, todoId, sho
     }));
 
     useEffect(() => {
-        if (deletedTodo && deletedTodo.data) {
+        if (deletedTodo && deletedTodo.data && deletedTodo.isLoading === false) {
             dispatch({type: 'DELETE_TODO', todoId: todoId})
         }
     }, [deletedTodo])
 
     useEffect(() => {
-        if (toggledTodo && toggleTodo.data) {
+        if (toggledTodo && toggleTodo.data && deletedTodo.isLoading === false) {
             dispatch({type: 'TOGGLE_TODO', complete: toggledTodo.data.complete, completedOn: toggledTodo.data.completedOn, todoId})
         }
     }, [toggledTodo])
