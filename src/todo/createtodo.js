@@ -8,7 +8,7 @@ export default function CreateTodo () {
     const [ title, setTitle ] = useState('');
     const [ description, setDescription ] = useState('');
 
-    const [ todos , createTodo ] = useResource(({ title, description, author }) => ({
+    const [ todo , createTodo ] = useResource(({ title, description, author }) => ({
         url: '/todos',
         method: 'post',
         data: { title, description, author }
@@ -26,15 +26,12 @@ export default function CreateTodo () {
         createTodo({ title, description, author: user })
     }
 
-    // if duplicate todos appear, change useEffect to something similar below
-    //if (post && post.isLoading === false && post.data)
-
     useEffect(() => {
-        if (todos && todos.data) {
-            dispatch({ type: 'CREATE_TODO', title: todos.data.title, description: todos.data.description, id: todos.data.id,  author: user })
-            navigation.navigate('/todo/${todos.data.id}')
+        if (todo && todo.data) {
+            dispatch({ type: 'CREATE_TODO', title: todo.data.title, description: todo.data.description, id: todo.data.id,  author: user })
+            navigation.navigate('/todo/${todo.data.id}')
         }  
-    }, [todos])
+    }, [todo])
 
     return (
     <form onSubmit={e => { e.preventDefault(); handleCreate(); }}>
@@ -43,11 +40,10 @@ export default function CreateTodo () {
             <label htmlFor="create-title">Title: </label>
             <input type="text" value={title} onChange={handleTitle} name="create-title" id="create-title" />
         </div>
-        <div>
-            <label htmlFor="description">Description: </label>
-            <input type="text" value={description} onChange={handleDescription} name="description" id="description" />
-        </div>
+        
+        <textarea value={description} onChange={handleDescription} />
         <input type="submit" value="Create Todo" />
         </form>    
     )
 }
+

@@ -15,9 +15,6 @@ function Todo ({ title , description, author, complete, completedOn, todoId, sho
             processedDescription = description.substring(0, 30) + '...'
         }
     }
-        
-    // is URL correct? is it /todos or /todo
-    // use {todoId} or {id}
 
     const [deletedTodo, deleteTodo] = useResource((todoId) => ({
         url: `/todos/${todoId}`,

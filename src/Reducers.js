@@ -10,7 +10,6 @@ function userReducer (state, action) {
     }
 }
 
-// NOTE: if not working, change postId to todoId
 function todosReducer (state, action) {
     switch (action.type) {
         case 'CREATE_TODO':
@@ -25,7 +24,7 @@ function todosReducer (state, action) {
             return [ newTodo, ...state ]
         case 'TOGGLE_TODO':
             return state.map((p) => {
-                if(p.i === action.todoId) {
+                if(p.id === action.todoId) {
                     p.complete = action.complete;
                     p.completedOn = action.completedOn;
                 }

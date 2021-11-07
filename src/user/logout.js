@@ -4,7 +4,7 @@ import { StateContext } from '../Contexts';
 export default function Logout() {
 
     const {state, dispatch} = useContext(StateContext);
-    // could also destructure it further, then use user as seen below:
+    // could also destructure it further, then use 'user' as seen below:
     const {user} = state;
 
     return (

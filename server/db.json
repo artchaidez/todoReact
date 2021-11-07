@@ -1,28 +1,20 @@
 {
   "todos": [
     {
-      "id": 3,
-      "title": "Post 3",
-      "description": "Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.\n\nQuisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.\n\nVestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.\n\nIn congue. Etiam justo. Etiam pretium iaculis justo.",
-      "author": "Ted",
-      "complete": false,
-      "completedOn": null
+      "title": "TESTING",
+      "description": "123",
+      "author": "Tury",
+      "id": 6,
+      "complete": true,
+      "completedOn": 1636297285809
     },
     {
-      "title": "XXXXXX",
-      "description": "Test Post",
-      "author": "Paul",
-      "complete": false,
-      "completedOn": null,
-      "id": 4
-    },
-    {
-      "title": "Test",
-      "description": "Test Post",
-      "author": "Paul",
-      "complete": false,
-      "completedOn": null,
-      "id": 5
+      "title": "Toggle Todo",
+      "description": "Testing if toggle works",
+      "author": "Tury",
+      "id": 7,
+      "complete": true,
+      "completedOn": 1636297368832
     }
   ],
   "users": [
