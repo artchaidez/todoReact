@@ -6,7 +6,7 @@ import { RequestProvider } from 'react-request-hook'
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:3000/api/'
+    baseURL: '/'
 })
 
 ReactDOM.render(
@@ -17,4 +17,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+//    baseURL: 'http://localhost:3000/api/'
+
 

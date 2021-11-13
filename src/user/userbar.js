@@ -13,7 +13,7 @@ export default function UserBar() {
     const [showLogin, setShowLogin] = useState(false)
     const [showRegister, setShowRegister] = useState(false)
 
-    if (user) {
+    if (state.user.username) {
         return (
             <>
             <Logout  />

@@ -13,7 +13,7 @@ import HomePage from './pages/HomePage';
 
 function App() {
 
-  const [ state, dispatch ] = useReducer(appReducer, { user: '', todos: [] })
+  const [ state, dispatch ] = useReducer(appReducer, { user: {}, todos: [] })
 
   const routes = mount({
     '/': route({ view: <HomePage /> }),
@@ -22,7 +22,6 @@ function App() {
         return { view: <TodoPage id={req.params.id} /> }
     }),
   })
-
 
   return (
     <div>
