@@ -6,7 +6,7 @@ import { RequestProvider } from 'react-request-hook'
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: '/'
+    baseURL: 'http://localhost:3000/api/'
 })
 
 ReactDOM.render(
@@ -19,5 +19,6 @@ ReactDOM.render(
 );
 
 //    baseURL: 'http://localhost:3000/api/'
+// prof changed baseURL to '/'
 
 

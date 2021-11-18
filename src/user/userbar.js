@@ -8,7 +8,6 @@ export default function UserBar() {
 
     const Logout = React.lazy(() => import('./Logout'))
     const {state} = useContext(StateContext);
-    const {user} = state;
 
     const [showLogin, setShowLogin] = useState(false)
     const [showRegister, setShowRegister] = useState(false)

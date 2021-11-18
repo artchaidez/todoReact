@@ -6,7 +6,36 @@ import { useResource } from 'react-request-hook';
 
 function Todo ({ title , description, author, complete, completedOn, todoId, short = false}) {
 
-    const {dispatch} = useContext(StateContext);
+    const {state, dispatch} = useContext(StateContext);
+    const {user} = state;
+
+    const [deletedTodo, deleteTodo] = useResource((todoId) => ({
+        url: `/todo/${todoId}`,
+        method: "delete",
+        headers: {"Authorization": `${state.user.access_token}`},
+    }));
+
+    const [toggledTodo, toggleTodo] = useResource((todoId, complete) => ({
+        url: `/todo/${todoId}`,
+        method: "put",
+        headers: {"Authorization": `${state.user.access_token}`},
+        data: {
+            complete: !complete,
+            completedOn: Date.now()
+        }
+    }));
+
+    useEffect(() => {
+        if (deletedTodo && deletedTodo.data && deletedTodo.isLoading === false) {
+            dispatch({type: 'DELETE_TODO', todoId: deletedTodo.data._id})
+        }
+    }, [deletedTodo])
+
+    useEffect(() => {
+        if (toggledTodo && toggledTodo.data && toggledTodo.isLoading === false) {
+            dispatch({type: 'TOGGLE_TODO', complete: toggledTodo.data.complete, completedOn: toggledTodo.data.completedOn, todoId: toggledTodo.data._id})
+        }
+    }, [toggledTodo])
 
     let processedDescription = description
     
@@ -16,40 +45,13 @@ function Todo ({ title , description, author, complete, completedOn, todoId, sho
         }
     }
 
-    const [deletedTodo, deleteTodo] = useResource((todoId) => ({
-        url: `/todos/${todoId}`,
-        method: "delete"
-    }));
-
-    const [toggledTodo, toggleTodo] = useResource((todoId, completed) => ({
-        url: `/todos/${todoId}`,
-        method: "patch",
-        data: {
-            complete: completed,
-            completedOn: Date.now()
-        }
-    }));
-
-    useEffect(() => {
-        if (deletedTodo && deletedTodo.data && deletedTodo.isLoading === false) {
-            dispatch({type: 'DELETE_TODO', todoId: todoId})
-        }
-    }, [deletedTodo])
-
-    useEffect(() => {
-        if (toggledTodo && toggleTodo.data && deletedTodo.isLoading === false) {
-            dispatch({type: 'TOGGLE_TODO', complete: toggledTodo.data.complete, completedOn: toggledTodo.data.completedOn, todoId})
-        }
-    }, [toggledTodo])
-
-
     return (
         <Card>
           <Card.Body>
               <Card.Title><Link  href={`/todo/${todoId}`}>{title}</Link>
               </Card.Title>
               <Card.Subtitle>
-              <i>Written by <b>{author}</b></i>
+              <i>Written by <b>{user.username}</b></i>
               </Card.Subtitle>
               <Card.Text>
                   {processedDescription}
