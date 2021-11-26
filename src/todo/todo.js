@@ -20,7 +20,7 @@ function Todo ({ title , description, author, complete, completedOn, todoId, sho
         method: "put",
         headers: {"Authorization": `${state.user.access_token}`},
         data: {
-            complete: !complete,
+            complete: complete,
             completedOn: Date.now()
         }
     }));
@@ -33,7 +33,7 @@ function Todo ({ title , description, author, complete, completedOn, todoId, sho
 
     useEffect(() => {
         if (toggledTodo && toggledTodo.data && toggledTodo.isLoading === false) {
-            dispatch({type: 'TOGGLE_TODO', complete: toggledTodo.data.complete, completedOn: toggledTodo.data.completedOn, todoId: toggledTodo.data._id})
+            dispatch({type: 'TOGGLE_TODO', complete: !toggledTodo.data.complete, completedOn: toggledTodo.data.completedOn, todoId: toggledTodo.data._id})
         }
     }, [toggledTodo])
 
